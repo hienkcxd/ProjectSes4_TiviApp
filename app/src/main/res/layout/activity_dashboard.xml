@@ -4,6 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:padding="10dp"
     tools:context=".DashboardActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.097">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSystem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background1"
+            android:drawableTop="@drawable/ic_7"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="System" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnClearCache"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background1"
+            android:drawableTop="@drawable/ic_7"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Clear Cache" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background1"
+            android:drawableTop="@drawable/ic_7"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Refresh" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.649">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background1"
+            android:drawableTop="@drawable/ic_7"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="System" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background1"
+            android:drawableTop="@drawable/ic_7"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Clear Cache" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background1"
+            android:drawableTop="@drawable/ic_7"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Refresh" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:srcCompat="@drawable/logo_ds" />
 </androidx.constraintlayout.widget.ConstraintLayout>
