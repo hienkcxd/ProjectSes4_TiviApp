@@ -28,7 +28,10 @@
             android:drawableTop="@drawable/ic_7"
             android:gravity="center"
             android:padding="10dp"
-            android:text="System" />
+            android:text="System"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClearCache"
@@ -41,7 +44,10 @@
             android:drawableTop="@drawable/ic_7"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Clear Cache" />
+            android:text="Clear Cache"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnRefresh"
@@ -52,7 +58,10 @@
             android:drawableTop="@drawable/ic_7"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Refresh" />
+            android:text="Refresh"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -69,36 +78,31 @@
             android:id="@+id/btnPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/btn_background1"
-            android:drawableTop="@drawable/ic_7"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="System" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnViewFile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:background="@drawable/btn_background1"
-            android:drawableTop="@drawable/ic_7"
+            android:drawableTop="@drawable/video_50"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Clear Cache" />
+            android:text="play"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:background="@drawable/btn_background1"
-            android:drawableTop="@drawable/ic_7"
+            android:drawableTop="@drawable/logout_50"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Refresh" />
+            android:text="logout"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ImageView
