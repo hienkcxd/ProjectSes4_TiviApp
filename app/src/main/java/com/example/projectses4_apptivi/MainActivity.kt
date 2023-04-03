@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import com.example.projectses4_apptivi.databinding.ActivityMainBinding
+import com.example.projectses4_apptivi.ui.DashboardActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

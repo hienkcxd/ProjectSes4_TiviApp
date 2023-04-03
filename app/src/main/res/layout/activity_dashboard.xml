@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:padding="10dp"
-    tools:context=".DashboardActivity">
+    tools:context=".ui.DashboardActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
