@@ -77,7 +77,7 @@
             android:text="System" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn"
+            android:id="@+id/btnViewFile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -90,7 +90,7 @@
             android:text="Clear Cache" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnRefresh"
+            android:id="@+id/btnLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
