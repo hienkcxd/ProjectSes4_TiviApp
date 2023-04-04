@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
