@@ -23,7 +23,7 @@
             android:id="@+id/txtDeviceName"
             android:layout_width="224dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="20dp"
             android:padding="10dp"
             android:text="Device's Name:"
             android:textColor="@color/popup_text"
@@ -48,7 +48,7 @@
             app:layout_constraintHorizontal_bias="0.168"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDeviceName"
-            app:layout_constraintVertical_bias="0.151" />
+            app:layout_constraintVertical_bias="0.076" />
 
         <TextView
             android:id="@+id/textView3"
@@ -79,7 +79,7 @@
             app:layout_constraintHorizontal_bias="0.168"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtStore"
-            app:layout_constraintVertical_bias="0.213" />
+            app:layout_constraintVertical_bias="0.081" />
 
         <TextView
             android:id="@+id/txtAndroidVersion"
@@ -95,7 +95,23 @@
             app:layout_constraintHorizontal_bias="0.168"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtAppVersion"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintVertical_bias="0.128" />
+
+        <TextView
+            android:id="@+id/txtRomUsage"
+            android:layout_width="224dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Rom Avaiable:"
+            android:textColor="@color/popup_text"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.168"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAppVersion"
+            app:layout_constraintVertical_bias="0.584" />
 
         <ImageButton
             android:id="@+id/btnClosePopUp"
@@ -110,9 +126,9 @@
 
         <TextView
             android:id="@+id/tvDeviceName"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="20dp"
             android:gravity="left"
             android:padding="10dp"
             android:textColor="@color/popup_text"
@@ -125,9 +141,8 @@
 
         <TextView
             android:id="@+id/tvStoreName"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:gravity="left"
             android:padding="10dp"
             android:textColor="@color/popup_text"
@@ -138,14 +153,13 @@
             app:layout_constraintHorizontal_bias="0.267"
             app:layout_constraintStart_toEndOf="@+id/txtStore"
             app:layout_constraintTop_toBottomOf="@+id/tvDeviceName"
-            app:layout_constraintVertical_bias="0.01" />
+            app:layout_constraintVertical_bias="0.076" />
 
         <TextView
             android:id="@+id/tvAppVersion"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
             android:gravity="left"
             android:padding="10dp"
             android:text="1.0.0"
@@ -154,14 +168,14 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.265"
+            app:layout_constraintHorizontal_bias="0.217"
             app:layout_constraintStart_toEndOf="@+id/txtAppVersion"
             app:layout_constraintTop_toBottomOf="@+id/tvStoreName"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.076" />
 
         <TextView
             android:id="@+id/tvAndroidVersion"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:gravity="left"
             android:padding="10dp"
@@ -174,7 +188,24 @@
             app:layout_constraintHorizontal_bias="0.267"
             app:layout_constraintStart_toEndOf="@+id/txtAndroidVersion"
             app:layout_constraintTop_toBottomOf="@+id/tvAppVersion"
-            app:layout_constraintVertical_bias="0.391" />
+            app:layout_constraintVertical_bias="0.134" />
+
+        <TextView
+            android:id="@+id/tvRomAvaiable"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="10dp"
+            android:textAlignment="gravity"
+            android:textColor="@color/popup_text"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.289"
+            app:layout_constraintStart_toEndOf="@+id/txtRomUsage"
+            app:layout_constraintTop_toBottomOf="@+id/tvAndroidVersion"
+            app:layout_constraintVertical_bias="0.187" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
