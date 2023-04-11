@@ -1,17 +1,27 @@
 package com.example.projectses4_apptivi.ui
 
+import android.app.ProgressDialog
+import android.content.ContentValues.TAG
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.os.StatFs
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.projectses4_apptivi.R
 import com.example.projectses4_apptivi.databinding.ActivityDashboardBinding
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.File
@@ -21,10 +31,22 @@ import java.lang.String.format
 class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     private var popup: PopupWindow? = null
+    private lateinit var videofile : List<String>
+    private var videoUri : Uri?=null
+    private val MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1
+    private lateinit var videoView:VideoView
+    //progress bar
+    private lateinit var progressDialog: ProgressDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //progress bar
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Please Wait")
+        progressDialog.setMessage("Please Wait...")
+        progressDialog.setCanceledOnTouchOutside(false)
 
         //chức năng của nut xem system hệ thống
         val osVersion = Build.VERSION.RELEASE
@@ -69,11 +91,71 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         //chức năng tải nội dung video
-        val client = OkHttpClient()
-        val url = "https://drive.google.com/uc?id=1a2YAn5wgYUZVUPEqUKfTMvw4TTiV2-1m&export=download"
-        val request = Request.Builder()
-            .url(url)
-            .build()
+        videofile = listOf("video_kem_taco", "video_1681181648756")
+        //nut refresh
+        binding.btnRefresh.setOnClickListener {
+            downloadVideoInList()
+            progressDialog.dismiss()
+        }
 
+        binding.btnPlay.setOnClickListener {
+            val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),"video")
+            val path = file.absolutePath
+            val videoPath = "$path/video_kem_taco.mp4"
+            Log.d(TAG, "File $path")
+            videoView.start()
+        }
+
+    }
+//    private fun listVideoOfDevice(fileList : List<String>):List<String>{
+//        return fileList
+//    }
+
+
+    //cac function rieng
+    //handle permission result
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE -> {
+                // Nếu người dùng cho phép truy cập bộ nhớ trong, tiến hành tải file về
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    downloadVideoInList()
+                } else {
+                    // Người dùng từ chối quyền truy cập bộ nhớ trong, hiển thị thông báo hoặc thực hiện hành động khác tùy vào yêu cầu của ứng dụng
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_LONG).show()
+                }
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+            }
+        }
+
+    }
+    private fun downloadVideoInList(){
+        val storageRef = FirebaseStorage.getInstance().reference
+        val fileList = listOf("video_kem_taco") // danh sách tên file cần tải
+        val localDir = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) // thư mục lưu trữ tại thiết bị
+        for (file in fileList) {
+            val localFile = File(localDir, file)
+            val videoRef = storageRef.child("Videos/$file")
+
+            videoRef.getFile(localFile).addOnSuccessListener {
+                // tải file thành công
+                Log.d(TAG, "File $file downloaded successfully")
+                Toast.makeText(this, "File $file downloaded successfully", Toast.LENGTH_LONG).show()
+            }.addOnFailureListener {
+                // tải file thất bại
+                Log.d(TAG, "File $file downloaded failed")
+                Toast.makeText(this, "File $file downloaded failed", Toast.LENGTH_LONG).show()
+            }
+        }
+
+//        val fileList = listOf("video_kem_taco", "an_kieng_a007")
+//        progressDialog.setMessage("Downloading $file")
+//        progressDialog.show()
+//        Log.d(TAG, "File $file downloaded successfully")
+//        Toast.makeText(this, "File $file downloaded successfully", Toast.LENGTH_LONG).show()
     }
 }
