@@ -94,8 +94,6 @@ class DashboardActivity : AppCompatActivity() {
         videofile = listOf("video_kem_taco", "video_1681181648756")
         //nut refresh
         binding.btnRefresh.setOnClickListener {
-            downloadVideoInList()
-            progressDialog.dismiss()
         }
 
         binding.btnPlay.setOnClickListener {
@@ -107,55 +105,5 @@ class DashboardActivity : AppCompatActivity() {
         }
 
     }
-//    private fun listVideoOfDevice(fileList : List<String>):List<String>{
-//        return fileList
-//    }
 
-
-    //cac function rieng
-    //handle permission result
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE -> {
-                // Nếu người dùng cho phép truy cập bộ nhớ trong, tiến hành tải file về
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    downloadVideoInList()
-                } else {
-                    // Người dùng từ chối quyền truy cập bộ nhớ trong, hiển thị thông báo hoặc thực hiện hành động khác tùy vào yêu cầu của ứng dụng
-                    Toast.makeText(this, "Permission denied", Toast.LENGTH_LONG).show()
-                }
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-            }
-        }
-
-    }
-    private fun downloadVideoInList(){
-        val storageRef = FirebaseStorage.getInstance().reference
-        val fileList = listOf("video_kem_taco") // danh sách tên file cần tải
-        val localDir = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) // thư mục lưu trữ tại thiết bị
-        for (file in fileList) {
-            val localFile = File(localDir, file)
-            val videoRef = storageRef.child("Videos/$file")
-
-            videoRef.getFile(localFile).addOnSuccessListener {
-                // tải file thành công
-                Log.d(TAG, "File $file downloaded successfully")
-                Toast.makeText(this, "File $file downloaded successfully", Toast.LENGTH_LONG).show()
-            }.addOnFailureListener {
-                // tải file thất bại
-                Log.d(TAG, "File $file downloaded failed")
-                Toast.makeText(this, "File $file downloaded failed", Toast.LENGTH_LONG).show()
-            }
-        }
-
-//        val fileList = listOf("video_kem_taco", "an_kieng_a007")
-//        progressDialog.setMessage("Downloading $file")
-//        progressDialog.show()
-//        Log.d(TAG, "File $file downloaded successfully")
-//        Toast.makeText(this, "File $file downloaded successfully", Toast.LENGTH_LONG).show()
-    }
 }
