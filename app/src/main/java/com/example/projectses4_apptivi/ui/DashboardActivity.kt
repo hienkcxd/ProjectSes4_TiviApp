@@ -2,6 +2,7 @@ package com.example.projectses4_apptivi.ui
 
 import android.app.ProgressDialog
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -94,14 +95,12 @@ class DashboardActivity : AppCompatActivity() {
         videofile = listOf("video_kem_taco", "video_1681181648756")
         //nut refresh
         binding.btnRefresh.setOnClickListener {
+            val intent = Intent(this, ShowVideoActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btnPlay.setOnClickListener {
-            val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),"video")
-            val path = file.absolutePath
-            val videoPath = "$path/video_kem_taco.mp4"
-            Log.d(TAG, "File $path")
-            videoView.start()
+
         }
 
     }

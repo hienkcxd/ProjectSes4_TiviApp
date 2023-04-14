@@ -6,8 +6,4 @@ import androidx.recyclerview.widget.RecyclerView
 
 class AdapterVideo {
     //view holder class holds and init UI view or row_video.xml
-    class HolderVideo(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //init ui
-        var videoView : VideoView = itemView.findViewById(R.id.)
-    }
 }
