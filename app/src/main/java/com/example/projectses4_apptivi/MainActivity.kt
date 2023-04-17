@@ -30,6 +30,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         sharedPreferences = JwtSharePreference(this)
+        if (isLoggedIn()) {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         binding.btnSubmit.setOnClickListener{
             formLogin()
         }
@@ -58,6 +63,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun clearJwt() {
         sharedPreferences.clearJwt()
+    }
+    fun isLoggedIn(): Boolean {
+        val sharedPreferences = getSharedPreferences("jwt_prefs", Context.MODE_PRIVATE)
+        return sharedPreferences.contains("jwt") //kiểm tra xem đã lưu jwt_token trong SharedPreferences chưa
     }
 
     private fun formLogin(){
