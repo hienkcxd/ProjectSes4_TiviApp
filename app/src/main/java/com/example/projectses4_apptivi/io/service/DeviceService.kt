@@ -48,7 +48,9 @@ interface DeviceService {
 
 
     companion object {
-        private const val BASE_URL = "http://192.168.1.128:8080/api/"
+//        private const val BASE_URL = "http://192.168.1.128:8080/api/"
+        private const val BASE_URL ="http://172.16.1.170:8080/api/"
+
 
         fun create(authToken: String): DeviceService {
             val interceptor = HttpLoggingInterceptor()

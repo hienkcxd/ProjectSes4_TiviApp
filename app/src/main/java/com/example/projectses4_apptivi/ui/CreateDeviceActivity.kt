@@ -40,6 +40,8 @@ class CreateDeviceActivity : AppCompatActivity() {
     private var areaList : List<String> = listOf()
     private var storeList : List<String> = listOf()
     private var groupList : List<String> = listOf()
+    private var deviceList : List<String> = listOf()
+    private var checkDevice : Boolean = true
     private var areaSelected : String = ""
     private var storeSelected : String = ""
     private var groupSelected : String = ""
@@ -60,7 +62,11 @@ class CreateDeviceActivity : AppCompatActivity() {
         autoCompleteTextViewStore = binding.edtStore
         autoCompleteTextViewGroup = binding.edtGroup
         Log.i("jwt", "area list tra ve adapter ${areaList.toString()} ")
-
+        lifecycleScope.launch {
+            getListDevice()
+            checkDevice = deviceList.contains(sharedPreferences.getDeviceId().toString())
+            goToNext()
+        }
         //dropdown list for Area
         lifecycleScope.launch {
             getListArea()
@@ -229,6 +235,37 @@ class CreateDeviceActivity : AppCompatActivity() {
                 } else {
                     groupList = groupResponse.map { it.groupName }
                     Log.i("jwt", "danh sach group: ${groupList.toString()}")
+                }
+            } else {
+                Log.i("jwt", "khong lay duoc du lieu")
+                Toast.makeText(applicationContext, "error 403!!!", Toast.LENGTH_LONG).show()
+            }
+        } catch (e: Exception) {
+            Log.e("jwt", e.message ?: "Unknown error")
+        }
+    }
+    private fun goToNext(){
+        if (checkDevice) {
+            Log.i("jwt", "tinh trang check device: ${checkDevice.toString()}")
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+    private suspend fun getListDevice(){
+        try {
+            val callGroup = deviceService.getDeviceList(getJwt().toString())
+            val response = callGroup.awaitResponse()
+            if (response.isSuccessful) {
+                val deviceResponse: List<DeviceModel>? = response.body()
+                Log.i("jwt", "jwt lay duoc ${deviceResponse.toString()} ")
+                if (deviceResponse == null) {
+                    Toast.makeText(applicationContext, "không có dữ liệu!!!", Toast.LENGTH_LONG).show()
+                    Log.i("jwt", "group trống")
+                    return
+                } else {
+                    deviceList = deviceResponse.map { it.deviceID.toString() }
+                    Log.i("jwt", "danh sach group: ${deviceList.toString()}")
                 }
             } else {
                 Log.i("jwt", "khong lay duoc du lieu")

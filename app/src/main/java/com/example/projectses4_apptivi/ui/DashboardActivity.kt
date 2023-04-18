@@ -18,8 +18,10 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.projectses4_apptivi.MainActivity
 import com.example.projectses4_apptivi.R
 import com.example.projectses4_apptivi.databinding.ActivityDashboardBinding
+import com.example.projectses4_apptivi.io.ManageSharePreference.JwtSharePreference
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
@@ -36,6 +38,7 @@ class DashboardActivity : AppCompatActivity() {
     private var videoUri : Uri?=null
     private val MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1
     private lateinit var videoView:VideoView
+    private lateinit var sharedPreferences: JwtSharePreference
     //progress bar
     private lateinit var progressDialog: ProgressDialog
 
@@ -43,6 +46,7 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        sharedPreferences = JwtSharePreference(this)
         //progress bar
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Please Wait")
@@ -102,7 +106,26 @@ class DashboardActivity : AppCompatActivity() {
         binding.btnPlay.setOnClickListener {
 
         }
-
+        binding.btnLogout.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage("Bạn có muốn ở lại hay rời đi?")
+                .setCancelable(false)
+                .setPositiveButton("Cancel") { dialog, id ->
+                    // Khi chọn ở lại
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Accept") { dialog, id ->
+                    clearJwt()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    dialog.dismiss()
+                    finish()
+                }
+            val alert = builder.create()
+            alert.show()
+        }
     }
-
+    private fun clearJwt(){
+        sharedPreferences.clearJwt()
+    }
 }
