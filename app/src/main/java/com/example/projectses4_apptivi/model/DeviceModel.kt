@@ -2,31 +2,32 @@ package com.example.projectses4_apptivi.model
 
 class DeviceModel {
     var id:String ?= null
-    var area:String ?= null
-    var deviceId:String ?= null
+    var deviceID:String ?= null
     var deviceName:String ?= null
-    var fileName:String ?= null
+    var username:String ?= null
+    var storeName:String ?= null
     var groupName:String ?= null
-    var storename:String ?= null
-    var userName:String ?= null
+    var area:String ?= null
+    var fileStorage:String ?= null
 
     constructor(){}
     constructor(
-        area: String?,
-        deviceId: String?,
+        deviceID: String?,
         deviceName: String?,
-        fileName: String?,
+        username: String?,
+        storeName: String?,
         groupName: String?,
-        storename: String?,
-        userName: String?
+        area: String?,
+        fileStorage: String?
     ) {
-        this.area = area
-        this.deviceId = deviceId
+        this.deviceID = deviceID
         this.deviceName = deviceName
-        this.fileName = fileName
+        this.username = username
+        this.storeName = storeName
         this.groupName = groupName
-        this.storename = storename
-        this.userName = userName
+        this.area = area
+        this.fileStorage = fileStorage
     }
+
 
 }

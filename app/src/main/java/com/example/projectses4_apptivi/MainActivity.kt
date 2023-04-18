@@ -10,10 +10,11 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import com.example.projectses4_apptivi.databinding.ActivityMainBinding
-import com.example.projectses4_apptivi.io.LoginRequest
-import com.example.projectses4_apptivi.io.LoginService
+import com.example.projectses4_apptivi.io.service.LoginService
+import com.example.projectses4_apptivi.io.service.LoginRequest
 import com.example.projectses4_apptivi.io.ManageSharePreference.JwtSharePreference
 import com.example.projectses4_apptivi.io.response.LoginResponse
+import com.example.projectses4_apptivi.ui.CreateDeviceActivity
 import com.example.projectses4_apptivi.ui.DashboardActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         sharedPreferences = JwtSharePreference(this)
         if (isLoggedIn()) {
-            val intent = Intent(this, DashboardActivity::class.java)
+            val intent = Intent(this, CreateDeviceActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -47,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         return super.onTouchEvent(event)
     }
 
-    private fun gotoDashboard() {
-        val intent = Intent(this, DashboardActivity::class.java)
+    private fun gotoCreateDevice() {
+        val intent = Intent(this, CreateDeviceActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -60,10 +61,14 @@ class MainActivity : AppCompatActivity() {
     private fun getJwt(): String? {
         return sharedPreferences.getJwt()
     }
+    private fun saveUser(user: String) {
+        sharedPreferences.saveUser(user)
+    }
 
     private fun clearJwt() {
         sharedPreferences.clearJwt()
     }
+
     fun isLoggedIn(): Boolean {
         val sharedPreferences = getSharedPreferences("jwt_prefs", Context.MODE_PRIVATE)
         return sharedPreferences.contains("jwt") //kiểm tra xem đã lưu jwt_token trong SharedPreferences chưa
@@ -86,8 +91,9 @@ class MainActivity : AppCompatActivity() {
                     }
                     else{
                         saveJwt(loginResponse.access_token)
+                        saveUser(usernameLogin)
                         Log.i("jwt", "jwt hien tai: ${getJwt().toString()}")
-                        gotoDashboard()
+                        gotoCreateDevice()
                     }
                 }else{
                     Toast.makeText(applicationContext, "invalid username or password!!!", Toast.LENGTH_LONG).show()
@@ -99,5 +105,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun getListDevice(){
+
     }
 }

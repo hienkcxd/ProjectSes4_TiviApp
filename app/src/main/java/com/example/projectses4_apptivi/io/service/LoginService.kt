@@ -1,4 +1,4 @@
-package com.example.projectses4_apptivi.io
+package com.example.projectses4_apptivi.io.service
 
 import android.util.Log
 import com.example.projectses4_apptivi.io.response.LoginResponse

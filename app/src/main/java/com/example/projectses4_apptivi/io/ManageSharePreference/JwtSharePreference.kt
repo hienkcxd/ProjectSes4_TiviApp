@@ -7,6 +7,8 @@ class JwtSharePreference(context: Context) {
     companion object {
         private const val PREFS_NAME = "jwt_prefs"
         private const val JWT_KEY = "jwt"
+        private const val USER_NAME = "user"
+        private const val DEVICE_ID = "deviceId"
     }
 
     private val preferences: SharedPreferences =
@@ -15,7 +17,18 @@ class JwtSharePreference(context: Context) {
     fun saveJwt(jwt: String) {
         preferences.edit().putString(JWT_KEY, jwt).apply()
     }
-
+    fun saveDeviceId(deviceId: String) {
+        preferences.edit().putString(DEVICE_ID, deviceId).apply()
+    }
+    fun getDeviceId(): String? {
+        return preferences.getString(DEVICE_ID, null)
+    }
+    fun saveUser(user: String) {
+        preferences.edit().putString(USER_NAME, user).apply()
+    }
+    fun getUser(): String? {
+        return preferences.getString(USER_NAME, null)
+    }
     fun getJwt(): String? {
         return preferences.getString(JWT_KEY, null)
     }

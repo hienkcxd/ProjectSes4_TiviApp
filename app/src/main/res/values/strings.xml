@@ -2,4 +2,5 @@
     <string name="app_name">ProjectSes4_AppTivi</string>
     <string name="area_label">Area</string>
     <string name="store_label">Store</string>
+    <string name="groupStore_label">Group Store</string>
 </resources>

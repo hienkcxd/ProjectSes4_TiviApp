@@ -1,33 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.CreateDeviceActivity">
 
+    <TextView
+        android:id="@+id/txtDevice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="CREATE DEVICE"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        />
+    <EditText
+        android:id="@+id/edtDeviceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="#2F80ED"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtLayoutArea"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/edtArea"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:hint="@string/area_label"
+            android:textSize="20sp"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtLayoutStore"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/edtStore"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:hint="@string/store_label"
+            android:textSize="20sp"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtLayoutGroup"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/edtGroup"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:hint="@string/groupStore_label"
+            android:textSize="20sp"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="50dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:layout_margin="16dp"
+        app:layout_constraintVertical_bias="0.649">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCreateDevice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp">
-
-            <AutoCompleteTextView
-                android:id="@+id/edtArea"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:hint="@string/area_label"
-                android:inputType="none" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
+            android:layout_weight="1"
+            android:background="@drawable/btn_background1"
+            android:gravity="center"
+            android:text="Create"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCancelDevice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_background1"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
