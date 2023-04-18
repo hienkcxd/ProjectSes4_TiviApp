@@ -6,6 +6,7 @@ import com.example.projectses4_apptivi.io.response.AreaResponse
 import com.example.projectses4_apptivi.io.response.GroupStoreResponse
 import com.example.projectses4_apptivi.io.response.LoginResponse
 import com.example.projectses4_apptivi.io.response.StoreResponse
+import com.example.projectses4_apptivi.model.DetailDeviceJson
 import com.example.projectses4_apptivi.model.DeviceModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -25,21 +26,27 @@ interface DeviceService {
     fun getDeviceList(
         @Header("Authorization") token: String,
     ): Call<List<DeviceModel>>
-    //lay danh sach thiet bị
-    @GET(value = "user/device/dto={deviceId}")
+
+    //lay detail thiet bi
+    @GET(value = "user/device/deviceId={deviceId}")
     fun getDeviceDetail(
         @Header("Authorization") token: String,
-        @Path("deviceId") deviceId: String
-    ): Call<DeviceModel>
+        @Path("deviceId") deviceId: String,
+    ): Call<DetailDeviceJson>
+
+    //lay ds store cua user
     @GET(value = "user/store")
     fun getStore(
         @Header("Authorization") token: String
     ): Call<List<StoreResponse>>
 
+    //lay ds group cua user
     @GET(value = "user/device-in-group")
     fun getGroupDevice(
         @Header("Authorization") token: String
     ): Call<List<GroupStoreResponse>>
+
+    //them cua hang
     @POST(value = "user/device")
     fun saveDevice(
         @Header("Authorization") token: String,

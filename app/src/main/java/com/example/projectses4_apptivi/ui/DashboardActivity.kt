@@ -95,8 +95,6 @@ class DashboardActivity : AppCompatActivity() {
             dialog.show()
         }
 
-        //chức năng tải nội dung video
-        videofile = listOf("video_kem_taco", "video_1681181648756")
         //nut refresh
         binding.btnRefresh.setOnClickListener {
             val intent = Intent(this, ShowVideoActivity::class.java)
@@ -104,7 +102,8 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         binding.btnPlay.setOnClickListener {
-
+            val intent = Intent(this, ShowVideoActivity::class.java)
+            startActivity(intent)
         }
         binding.btnLogout.setOnClickListener {
             val builder = AlertDialog.Builder(this)

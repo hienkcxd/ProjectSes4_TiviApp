@@ -20,6 +20,7 @@ import com.example.projectses4_apptivi.io.service.DeviceService
 import com.example.projectses4_apptivi.model.DeviceModel
 import com.example.projectses4_apptivi.ui.CreateDeviceActivity
 import com.example.projectses4_apptivi.ui.DashboardActivity
+import com.example.projectses4_apptivi.ui.ShowVideoActivity
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     private fun goToFirst(){
         if (isLoggedIn()&&checkDevice) {
             Log.i("jwt", "tinh trang check device: ${checkDevice.toString()}")
-            val intent = Intent(this, DashboardActivity::class.java)
+            val intent = Intent(this, ShowVideoActivity::class.java)
             startActivity(intent)
             finish()
         }

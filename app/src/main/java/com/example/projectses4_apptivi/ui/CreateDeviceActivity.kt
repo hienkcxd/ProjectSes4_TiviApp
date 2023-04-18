@@ -247,7 +247,7 @@ class CreateDeviceActivity : AppCompatActivity() {
     private fun goToNext(){
         if (checkDevice) {
             Log.i("jwt", "tinh trang check device: ${checkDevice.toString()}")
-            val intent = Intent(this, DashboardActivity::class.java)
+            val intent = Intent(this, ShowVideoActivity::class.java)
             startActivity(intent)
             finish()
         }
